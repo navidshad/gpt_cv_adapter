@@ -1,5 +1,5 @@
-cv_adapted/
-jobs/
+.cv_adapted/
+.jobs/
 cv.txt
 
 # Byte-compiled / optimized / DLL files

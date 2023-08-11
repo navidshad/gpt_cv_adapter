@@ -6,63 +6,112 @@
   </head>
 
   <body>
-    <!-- Personal and contact info Section -->
     <div class="header">
-      <h1 class="m-b-0">{ Full Name }</h1>
-      <h2 class="m-t-0">{ Position Title}</h2>
+      <h1 class="m-b-0">
+        <!-- Put full name -->
+      </h1>
+      <h2 class="m-t-0">
+        <!-- Put job title -->
+      </h2>
       <table class="w-full">
         <tr>
-          <td>{ Phone }</td>
-          <td>{ Email }</td>
+          <td>
+            Phone:
+            <!-- Put phone number -->
+          </td>
+          <td>
+            Email:
+            <!-- Put email -->
+          </td>
         </tr>
         <tr>
-          <td>{ Address }</td>
-          <td>{ GitHub }</td>
+          <td>
+            Address:
+            <!-- Put address -->
+          </td>
+          <td>
+            GitHub:
+            <!-- Put GitHub link with a tag -->
+          </td>
         </tr>
       </table>
     </div>
 
     <div class="flex">
-      <!-- Summary And Experiences -->
       <section class="flex-1">
-        <!-- Summary -->
         <div class="section-div">
           <h2>Summary</h2>
-          <p>{ summary text }</p>
+          <p>
+            <!-- Put summary text here -->
+          </p>
         </div>
 
-        <!-- Experience -->
         <div class="section-div">
           <h2>Experience</h2>
-
+          <!-- you have to copy this dev for each experience -->
           <div>
-            <h4>{ Job posiotion, Company }</h4>
-            <p>{ Job description }</p>
-            <p>{ Used skills }</p>
+            <div>
+              <h4>
+                <!-- Put Job posiotion, Company -->
+              </h4>
+
+              <!-- Be sure that you put job duration date here, remove this tag if you did not find date info about the experience -->
+              <span>
+                <!-- 
+                  Put Job duration date here,
+                  Example: 2019 - 2020
+                -->
+              </span>
+            </div>
+
+            <p>
+              <!-- 
+                Put experience description here, it's mostly a line or two about the role and the company,
+                remove this tag if you can't.
+              -->
+            </p>
+
+            <ul class="ex-rule-ul">
+              <!-- 
+                Put experience bullet points here with li tag,
+                Example: 
+                  <li>- Developed a web application using React.js</li>
+                  <li>- Increased the performance of the application by 30%</li>
+              -->
+            </ul>
+
+            <p>
+              <!-- 
+                Put Used Technologies here with b tag,
+                Example: <b>Technologies:</b> Vue.js, ECMAScript, Jest, CSS Modules, Sass
+              -->
+            </p>
           </div>
         </div>
       </section>
 
-      <!-- Skills, Education, Personal project  -->
-      <section class="w-1/3">
+      <section class="w-1-3">
         <div class="section-div">
           <h3>Technical Skills</h3>
           <ul>
-            { for each skill }
+            <!-- 
+              Put skills with li tag,
+              Example: <li><b>Programming Languages:</b> Javascript, Typescript</li>
+            -->
           </ul>
         </div>
 
         <div class="section-div">
           <h3>Education</h3>
           <ul>
-            { for each education }
+            <!-- Put educations with li tag -->
           </ul>
         </div>
 
         <div class="section-div">
           <h3>Personal Projects</h3>
           <ul>
-            { for each project }
+            <!-- Put projects with li tag -->
           </ul>
         </div>
       </section>
@@ -103,6 +152,11 @@
     .section-div {
       margin: 0px 30px;
       border-bottom: 1px solid #eee;
+    }
+
+    .ex-rule-ul {
+      line-height: 16px;
+      font-size: 16px;
     }
 
     ul {
@@ -169,7 +223,7 @@
       flex: 1;
     }
 
-    .w-1\/3 {
+    .w-1-3 {
       width: 33.333333%;
     }
   </style>
