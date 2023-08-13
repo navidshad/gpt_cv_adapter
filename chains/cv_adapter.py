@@ -7,34 +7,40 @@ from langchain.prompts.chat import (
 )
 
 from langchain.chains import LLMChain
-	
+
 template = """
-You are a helpful assistant who generates adapted CV based on a job description.
-This is a CV content in tech industry:
-`{cv_content}`
+You are a CV assistant, and this is the CV content:
+```plaintext
+{cv_content}
+```
 """
 
-system_message_prompt = SystemMessagePromptTemplate.from_template(template);
+system_message_prompt = SystemMessagePromptTemplate.from_template(template)
 system_message_prompt.input_variables.append("cv_content")
 
 human_template = """
-# This is a job description:
-`{job_description}`
-
-Generate a ready to send adapted CV in markdown format.
+This is the job description:
+```plaintext
+{job_description}
+```
+Change the summary of the CV to match the job description, 
+Then replace the new summary to the CV content and create a new CV in markdown format. 
+you can write a cover letter at the end and return the result only.
 """
 
 human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
 human_message_prompt.input_variables.append("job_description")
 
-chat_prompt = ChatPromptTemplate.from_messages([system_message_prompt, human_message_prompt])
+chat_prompt = ChatPromptTemplate.from_messages(
+    [system_message_prompt, human_message_prompt]
+)
+
 
 def get_cv_chain(openai_api_key):
-	return LLMChain(
-		llm=ChatOpenAI(
-			openai_api_key=openai_api_key,
-			model="gpt-3.5-turbo-16k",
-		),
-		prompt=chat_prompt,
-	)
-
+    return LLMChain(
+        llm=ChatOpenAI(
+            openai_api_key=openai_api_key,
+            model="gpt-3.5-turbo-16k",
+        ),
+        prompt=chat_prompt,
+    )

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>CV {Full Name}</title>
+    <title>{Full Name} CV</title>
   </head>
 
   <body>
@@ -16,22 +16,30 @@
       <table class="w-full">
         <tr>
           <td>
-            Phone:
-            <!-- Put phone number -->
+            <!-- 
+              Put phone number
+              Example: Phone: +1 123 456 7890
+            -->
           </td>
           <td>
-            Email:
-            <!-- Put email -->
+            <!-- 
+              Put email
+              Example: Email: navidshad72@gmail.com
+            -->
           </td>
         </tr>
         <tr>
           <td>
-            Address:
-            <!-- Put address -->
+            <!-- 
+              Put address
+              Example: Address: 123, Street, City, Country
+            -->
           </td>
           <td>
-            GitHub:
-            <!-- Put GitHub link with a tag -->
+            <!-- 
+              Put GitHub link with "a" tag
+              Example: GitHub/<a href="https://github.com/navidshad">navidshad</a>
+            -->
           </td>
         </tr>
       </table>
@@ -42,20 +50,22 @@
         <div class="section-div">
           <h2>Summary</h2>
           <p>
-            <!-- Put summary text here -->
+            <!-- Justify Summary with job description and Put it here -->
           </p>
         </div>
 
         <div class="section-div">
           <h2>Experience</h2>
           <!-- you have to copy this dev for each experience -->
-          <div>
+          <div class="xp-container">
             <div>
               <h4>
-                <!-- Put Job posiotion, Company -->
+                <!-- 
+                  Put Position, Company title and location exactly like this.
+                  Example: Frontend Developer at Google, London
+                -->
               </h4>
 
-              <!-- Be sure that you put job duration date here, remove this tag if you did not find date info about the experience -->
               <span>
                 <!-- 
                   Put Job duration date here,
@@ -66,17 +76,15 @@
 
             <p>
               <!-- 
-                Put experience description here, it's mostly a line or two about the role and the company,
-                remove this tag if you can't.
+                Put company/experience description here
+                Example: KodeKloud is a learning-by-doing platform that provides quality training in DevOps and Automation Technologies.
               -->
             </p>
 
             <ul class="ex-rule-ul">
               <!-- 
                 Put experience bullet points here with li tag,
-                Example: 
-                  <li>- Developed a web application using React.js</li>
-                  <li>- Increased the performance of the application by 30%</li>
+                Example: <li>- Developed a web application using React.js</li><li>- Increased the performance of the application by 30%</li>
               -->
             </ul>
 
@@ -87,6 +95,11 @@
               -->
             </p>
           </div>
+
+          <h2>Cover letter</h2>
+          <!-- 
+              Put cover letter here and use <br/> tag for new line,
+            -->
         </div>
       </section>
 
@@ -151,6 +164,11 @@
 
     .section-div {
       margin: 0px 30px;
+      margin-bottom: 40px;
+    }
+
+    .xp-container,
+    .section-div {
       border-bottom: 1px solid #eee;
     }
 
