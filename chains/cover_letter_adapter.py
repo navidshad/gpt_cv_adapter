@@ -23,8 +23,7 @@ This is the job description:
 ```plaintext
 {job_description}
 ```
-Change the summary of the CV to match the job description, 
-Then replace the new summary to the CV content and create a new CV in markdown format.
+Generate a cover letter for the job description based on the CV content, and return the letter only.
 """
 
 human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
@@ -35,7 +34,7 @@ chat_prompt = ChatPromptTemplate.from_messages(
 )
 
 
-def get_cv_chain(openai_api_key):
+def get_cover_letter_chain(openai_api_key):
     return LLMChain(
         llm=ChatOpenAI(
             openai_api_key=openai_api_key,

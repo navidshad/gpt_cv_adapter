@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>{Full Name} CV</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<!-- 
+	Apply these global rules to all tags:
+	1. style "a" tag like this <a href="[link]" class="text-sky-600 hover:text-sky-800">[text]</a>
+
+-->
+
+<body class="text-gray-600 transition-all">
+	<div
+		class="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
+		<img src="https://play.tailwindcss.com/img/beams.jpg" alt=""
+			class="absolute top-1/2 left-1/2 max-w-none -translate-x-1/2 -translate-y-1/2" width="1308" />
+
+		<div
+			class="absolute inset-0 bg-[url(https://play.tailwindcss.com/img/grid.svg)] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]">
+		</div>
+
+		<div
+			class="relative bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-lg sm:px-10 xl:w-8/12 lg:w-9/12 md:w-11/12 w-full">
+
+			<div class="flex justify-between">
+				<div>
+					<h1 class="text-sky-500 text-2xl font-bold">
+						<!-- Put full name -->
+					</h1>
+
+					<h2 class="text-base">
+						<!-- Put job title -->
+					</h2>
+				</div>
+
+				<!-- Contact info, use icon for each item -->
+				<ul>
+					<li>
+						<!-- 
+							Put phone number
+							Example: Phone: +1 123 456 7890
+						-->
+					</li>
+					<li>
+						<!-- 
+							Put email
+							Example: Email: navidshad72@gmail.com
+						-->
+					</li>
+					<li>
+						<!-- 
+							Put address
+							Example: Address: 123, Street, City, Country
+						-->
+					</li>
+					<li>
+						<!-- 
+							Put GitHub link with "a" tag, use global rules for "a" tag.
+					  	-->
+					</li>
+				</ul>
+			</div>
+
+			<div class="section-div mb-10">
+				<h2 class="text-xl font-bold mb-4">Summary</h2>
+				<p class="text-justify">
+					<!-- 
+						Put the summary here and use <br/> for each new line after dots "."
+						Example: I am a frontend developer with 3 years of experience in React.js and Vue.js.<br/> I am a hard worker and I love to learn new technologies.<br/>
+					-->
+				</p>
+			</div>
+
+			<div class="flex space-x-5 border-t-2 mt-5 pt-5">
+				<section class="flex-1">
+					<div class="section-div mb-10">
+						<h2 class="text-xl font-bold mb-4">Experience</h2>
+
+						<!-- Copy this container for each experience -->
+						<div class="ex-container mb-8">
+							<div class="mb-2">
+								<h4 class="text-base font-bold text-sky-500">
+									<!-- 
+										Put Position, Company title and location exactly like this.
+										Example: Frontend Developer at Google, London
+									-->
+								</h4>
+
+								<span class="text-xs">
+									<!-- 
+										Put Job duration date here,
+										Example: 2019 - 2020
+									-->
+								</span>
+							</div>
+
+							<div class="text-base">
+								<p>
+									<!-- 
+									Put company/experience description here
+									Example: KodeKloud is a learning-by-doing platform that provides quality training in DevOps and Automation Technologies.
+								-->
+								</p>
+
+								<ul class="list-disc my-3">
+									<!-- 
+									Put experience bullet points here with li tag,
+									Example: <li>- Developed a web application using React.js</li><li>- Increased the performance of the application by 30%</li>
+								-->
+								</ul>
+
+								<p>
+									<!-- 
+									Put Used Technologies here with b tag,
+									Example: <b>Technologies:</b> Vue.js, ECMAScript, Jest, CSS Modules, Sass
+								-->
+								</p>
+							</div>
+
+						</div>
+					</div>
+				</section>
+
+				<section class="w-1/3">
+					<div class="section-div mb-10">
+						<h2 class="text-xl font-bold mb-4">Technical Skills</h3>
+
+							<!-- 
+								Copy this container for each skill category,
+								and put skills with label tag.
+							-->
+							<div class="mb-5">
+								<b class="text-sky-500">[ Category title ]:</b>
+								<div class="flex mt-2 flex-wrap">
+									<!-- Copy this lable tag for each skill -->
+									<label
+										class="border-2 rounded m-1 py-1 px-2 border-gray-100 hover:bg-gray-100">[Skill]</label>
+								</div>
+							</div>
+					</div>
+
+					<div class="section-div mb-10">
+						<h2 class="text-xl font-bold mb-4">Education</h3>
+							<ul>
+								<!-- 
+									Put educations with li tag 
+									Example: <li class="mb-5"><b>Master of Science in Computer Science</b><br/>University of London, 2019</li>
+								-->
+							</ul>
+					</div>
+
+					<div class="section-div mb-10">
+						<h2 class="text-xl font-bold mb-4">Personal Projects</h3>
+							<ul>
+								<!-- 
+									Put projects with li tag, use "a" tag for project link, use global rues for a tag as well, and keep project description.
+								-->
+							</ul>
+					</div>
+				</section>
+			</div>
+
+			<section class="border-t-2 mt-4 pt-4">
+				<p>
+					Thank you for taking the time to review my CV. I am excited about the opportunity to contribute
+					my skills, experience, and passion to your team. I look forward to the possibility of discussing
+					how my background aligns with your organization's goals and values.
+				</p>
+			</section>
+		</div>
+	</div>
+</body>
+
+</html>
