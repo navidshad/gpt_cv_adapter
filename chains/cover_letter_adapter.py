@@ -23,7 +23,7 @@ This is the job description:
 ```plaintext
 {job_description}
 ```
-Generate a cover letter for the job description based on the CV content, and return the letter only.
+Generate a cover letter for the job description based on the CV content with maximom 2 paragraphs, and return the letter only.
 """
 
 human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)

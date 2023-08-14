@@ -24,7 +24,7 @@ This is the job description:
 {job_description}
 ```
 Change the summary of the CV to match the job description, 
-Then replace the new summary to the CV content and create a new CV in markdown format.
+Then replace the new summary to the CV content and create a new CV in markdown format and return the new CV only without any extra description, for example dont menttion this is a new CV or etc.
 """
 
 human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)

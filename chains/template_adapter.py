@@ -21,7 +21,7 @@ human_template = """
 - This is the html template, attention to comments I put in the html template.
 `{template}`
 
-Generate a ready to use html content.
+Generate a ready to use html content and return the html content only nothing more. return the html content without any wrapper or comments.
 """
 
 human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)

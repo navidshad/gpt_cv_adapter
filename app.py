@@ -36,10 +36,9 @@ for job in jobs:
     coverletter_file_name = f"{cv_adapted_dir}/{job_title} _cover.txt"
     job_description = read_file_content(f"{jobs_dir}/{job}")
 
-    # print(f"{counter}/{total_jobs} Is running - {job_title}")
-
     # continue if file is already exist
     if not is_file_exist(md_file_name):
+        print(f"{counter}/{total_jobs} Running CV adapter for {job_title}")
         result = cv_chain.run(
             {
                 "cv_content": cv_content,
@@ -50,7 +49,7 @@ for job in jobs:
         write_file_content(md_file_name, result)
 
     if not is_file_exist(html_file_name):
-        print(f"{counter}/{total_jobs} Running Template Adapter for {job_title} CVs")
+        print(f"{counter}/{total_jobs} Running Template adapter for {job_title}")
 
         md_file_content = read_file_content(md_file_name)
         result = template_chain.run(
@@ -62,9 +61,7 @@ for job in jobs:
         write_file_content(html_file_name, result)
 
     if not is_file_exist(coverletter_file_name):
-        print(
-            f"{counter}/{total_jobs} Running Cover Letter Adapter for {job_title} CVs"
-        )
+        print(f"{counter}/{total_jobs} Running Cover-Letter adapter for {job_title}")
 
         result = cover_letter_chain.run(
             {
