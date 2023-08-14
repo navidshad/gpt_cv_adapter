@@ -3,6 +3,11 @@ from utils.file import *
 from chains.cv_adapter import get_cv_chain
 from chains.template_adapter import get_template_chain
 
+# allow to generate:
+allow_md_and_cover = True
+allow_html = True
+allow_pdf = False
+
 
 # read value from .env file
 def read_env(key):
@@ -36,7 +41,7 @@ for job in jobs:
     coverletter_file_name = f"{cv_adapted_dir}/{job_title} _cover.txt"
     job_description = read_file_content(f"{jobs_dir}/{job}")
 
-    if not is_file_exist(md_file_name):
+    if allow_md_and_cover and not is_file_exist(md_file_name):
         print(f"{counter}/{total_jobs} Running CV adapter for {job_title}")
         result = cv_chain.run(
             {
@@ -54,7 +59,7 @@ for job in jobs:
         write_file_content(md_file_name, cv)
         write_file_content(coverletter_file_name, cover_letter)
 
-    if not is_file_exist(html_file_name):
+    if allow_html and not is_file_exist(html_file_name):
         print(f"{counter}/{total_jobs} Running Template adapter for {job_title}")
 
         md_file_content = read_file_content(md_file_name)
@@ -66,7 +71,7 @@ for job in jobs:
         )
         write_file_content(html_file_name, result)
 
-    if not is_file_exist(pdf_file_name):
+    if allow_pdf and not is_file_exist(pdf_file_name):
         print(f"{counter}/{total_jobs} Running PDF converter for {job_title}")
 
         # find script path
