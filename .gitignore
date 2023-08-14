@@ -1,6 +1,7 @@
-.cv_adapted/
-.jobs/
-cv.txt
+data/
+
+# Node
+node_modules
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

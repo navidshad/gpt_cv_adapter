@@ -1,0 +1,23 @@
+{
+  "name": "cv-adapter",
+  "version": "1.0.0",
+  "description": "It's a python app that take your CV an a list of jobs to generate adapted CVs for each job.",
+  "main": "pdf_generator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/navidshad/gpt_cv_adapter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/navidshad/gpt_cv_adapter/issues"
+  },
+  "homepage": "https://github.com/navidshad/gpt_cv_adapter#readme",
+  "dependencies": {
+    "puppeteer": "^21.0.3"
+  }
+}
