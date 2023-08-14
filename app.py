@@ -1,7 +1,7 @@
+import json
 from utils.file import *
 from chains.cv_adapter import get_cv_chain
 from chains.template_adapter import get_template_chain
-from chains.cover_letter_adapter import get_cover_letter_chain
 
 
 # read value from .env file
@@ -16,7 +16,6 @@ def read_env(key):
 openai_api_key = read_env("OPENAI_API_KEY")
 cv_chain = get_cv_chain(openai_api_key)
 template_chain = get_template_chain(openai_api_key)
-cover_letter_chain = get_cover_letter_chain(openai_api_key)
 
 # Read CV & Job Description from file
 jobs_dir = "data/jobs"
@@ -43,10 +42,17 @@ for job in jobs:
             {
                 "cv_content": cv_content,
                 "job_description": job_description,
+                "json_object": '{"cv": "[new_cv]", "cover_letter": "[cover_letter]"}',
             }
         )
 
-        write_file_content(md_file_name, result)
+        # pars the result as json `{ "cv": "{new_cv}", "cover_letter": "{cover_letter}" }`
+        result = json.loads(result)
+        cv = result["cv"]
+        cover_letter = result["cover_letter"]
+
+        write_file_content(md_file_name, cv)
+        write_file_content(coverletter_file_name, cover_letter)
 
     if not is_file_exist(html_file_name):
         print(f"{counter}/{total_jobs} Running Template adapter for {job_title}")
@@ -59,17 +65,6 @@ for job in jobs:
             }
         )
         write_file_content(html_file_name, result)
-
-    if not is_file_exist(coverletter_file_name):
-        print(f"{counter}/{total_jobs} Running Cover-Letter adapter for {job_title}")
-
-        result = cover_letter_chain.run(
-            {
-                "cv_content": cv_content,
-                "job_description": job_description,
-            }
-        )
-        write_file_content(coverletter_file_name, result)
 
     if not is_file_exist(pdf_file_name):
         print(f"{counter}/{total_jobs} Running PDF converter for {job_title}")
