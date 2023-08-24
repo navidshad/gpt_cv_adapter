@@ -2,7 +2,7 @@ def evaluate_promp_result(result):
     if not result:
         return False
 
-    starters = ["```", "```html", "```json", "```plaintext", "```markdown", "```md"]
+    starters = ["```html", "```json", "```plaintext", "```markdown", "```md", "```"]
     enders = ["```"]
 
     for starter in starters:
