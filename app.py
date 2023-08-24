@@ -1,32 +1,25 @@
 import json
 from utils.file import *
+from utils.prompt import *
 from chains.cv_adapter import get_cv_chain
 from chains.template_adapter import get_template_chain
 
 # allow to generate:
-allow_md_and_cover = True
-allow_html = True
-allow_pdf = False
-
-
-# read value from .env file
-def read_env(key):
-    with open(".env", "r") as f:
-        for line in f.readlines():
-            if line.startswith(key):
-                return line.split("=")[1].strip()
-
+allow_newcv_and_cover = get_env_variable("ALLOW_NEWCV_AND_COVER")
+allow_html = get_env_variable("ALLOW_HTML")
+allow_pdf = get_env_variable("ALLOW_PDF")
 
 # Prepare Chains
-openai_api_key = read_env("OPENAI_API_KEY")
+openai_api_key = get_env_variable("OPENAI_API_KEY")
 cv_chain = get_cv_chain(openai_api_key)
 template_chain = get_template_chain(openai_api_key)
 
 # Read CV & Job Description from file
-jobs_dir = "data/jobs"
-cv_adapted_dir = "data/cv_adapted"
-cv_content = read_file_content("data/cv.txt")
-html_templates = read_file_content("templates/tailwind_01.html")
+full_name = get_env_variable("FULL_NAME")
+jobs_dir = get_env_variable("JOBS_DIR")
+cv_adapted_dir = get_env_variable("CV_ADAPTED_DIR")
+cv_content = read_file_content(get_env_variable("CV_FILE_NAME"))
+html_templates = read_file_content(get_env_variable("TEMPLATE_FILE_NAME"))
 jobs = get_files_list(jobs_dir, ".txt")
 total_jobs = len(jobs)
 
@@ -35,13 +28,20 @@ counter = 1
 
 for job in jobs:
     job_title = job.split(".")[0]
-    md_file_name = f"{cv_adapted_dir}/{job_title}.md"
-    html_file_name = f"{cv_adapted_dir}/{job_title}.html"
-    pdf_file_name = f"{cv_adapted_dir}/{job_title}.pdf"
-    coverletter_file_name = f"{cv_adapted_dir}/{job_title} _cover.txt"
+    job_dir = os.path.join(cv_adapted_dir, job_title)
+
+    # create job dir if not exist
+    if not os.path.exists(job_dir):
+        os.makedirs(job_dir)
+
+    md_file_name = f"{job_dir}/{job_title}.md"
+    coverletter_file_name = f"{job_dir}/{job_title} _cover.txt"
+    html_file_name = f"{job_dir}/{full_name} CV.html"
+    pdf_file_name = f"{job_dir}/{full_name} CV.pdf"
+
     job_description = read_file_content(f"{jobs_dir}/{job}")
 
-    if allow_md_and_cover and not is_file_exist(md_file_name):
+    if allow_newcv_and_cover and not is_file_exist(md_file_name):
         print(f"{counter}/{total_jobs} Running CV adapter for {job_title}")
         result = cv_chain.run(
             {
@@ -50,6 +50,8 @@ for job in jobs:
                 "json_object": '{"cv": "[new_cv]", "cover_letter": "[cover_letter]"}',
             }
         )
+
+        result = evaluate_promp_result(result)
 
         # pars the result as json `{ "cv": "{new_cv}", "cover_letter": "{cover_letter}" }`
         result = json.loads(result)
@@ -69,6 +71,9 @@ for job in jobs:
                 "template": html_templates,
             }
         )
+
+        result = evaluate_promp_result(result)
+
         write_file_content(html_file_name, result)
 
     if allow_pdf and not is_file_exist(pdf_file_name):

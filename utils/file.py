@@ -1,7 +1,6 @@
 import os
 
 
-# get files list from directory
 def get_files_list(path, extension=None):
     files = os.listdir(path)
     if extension is not None:
@@ -21,3 +20,14 @@ def write_file_content(path, content):
 
 def is_file_exist(path):
     return os.path.isfile(path)
+
+
+def get_env_variable(name):
+    with open(".env", "r") as f:
+        lines = f.readlines()
+        for line in lines:
+            if line.startswith(name):
+                try:
+                    return line.split("=")[1].strip()
+                except IndexError:
+                    return None
