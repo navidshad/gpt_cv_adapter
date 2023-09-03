@@ -2,5 +2,4 @@
 2. Find a proper [Position Title] for the CV based on the job description.
 3. Then replace the new summary to the CV content and create a new CV in markdown format.
 4. Change cv experiences and technologies to match the job description.
-4.1. Replace all vuejs with reactjs, and change relative vuejs technologies to reactjs technologies.
 5. Generate a cover letter for the job description based on the CV content with maximom 2 paragraphs. if ther is skills in the job description that are not in the CV, list them to into cover letter and say I will learn them.
