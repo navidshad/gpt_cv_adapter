@@ -28,6 +28,14 @@ def get_env_variable(name):
         for line in lines:
             if line.startswith(name):
                 try:
-                    return line.split("=")[1].strip()
+                    value = line.split("=")[1].strip()
+
+                    # cast boolean
+                    if value.lower() == "true":
+                        return True
+                    elif value.lower() == "false":
+                        return False
+                    
+                    return value
                 except IndexError:
                     return None
