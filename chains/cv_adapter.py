@@ -1,4 +1,3 @@
-import json
 from langchain.chat_models import ChatOpenAI
 from utils.file import read_file_content
 
