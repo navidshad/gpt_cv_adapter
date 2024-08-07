@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer-core');
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 
 const generatePDF = async () => {
 
@@ -8,7 +9,7 @@ const generatePDF = async () => {
 
 	const browser = await puppeteer.launch({
 		headless: true,
-		executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+		executablePath: getChromeExecutablePath(),
 		args: ['--no-sandbox', '--disable-setuid-sandbox']
 	});
 
@@ -44,6 +45,26 @@ const generatePDF = async () => {
 			console.log(err);
 		}
 	});
+}
+
+const getChromeExecutablePath = () => {
+
+	const platform = os.platform();
+
+	if (platform === 'linux') {
+		return '/usr/bin/google-chrome';
+
+	} else if (platform === 'darwin') {
+		return '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+
+	} else if (platform === 'win32') {
+		return 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
+
+	} else {
+		throw new Error('Unsupported platform: ' + platform);
+
+	}
+
 }
 
 generatePDF();
