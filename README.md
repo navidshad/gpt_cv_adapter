@@ -40,9 +40,10 @@ npm install puppeteer-core
 2. **Environment Variable**: Create a `.env` file in the root directory of the project and add the following environment variables:
 
 ```sh
-OPENAI_API_KEY=
+# Check openAi platform to get a token
+OPENAI_API_KEY= <token>
 
-FULL_NAME = Your Name
+FULL_NAME = <YourName>
 
 JOBS_DIR = data/jobs
 CV_ADAPTED_DIR = data/cv_adapted
